@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Instagram</h1>
+    <%for(post of posts){%>
+        <%if(post.id===postId.id){%>
+            <div class="instaBox">
+                <h3>@<%=post.username%></h3>
+                <img src="<%=post.img%>" alt="instaPost">
+                <br><br>
+                <caption><%=post.caption%></caption>
+            </div>
+        <%}%>
+    <%}%>
+</body>
+</html>

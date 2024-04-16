@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Create New Post </h1>
+    <form action="/posts" method="post">
+        <label for="user">Username</label>
+        <input type="text" name="username" placeholder="username" id="user">
+        <br><br>
+        <label for="imageUpload">Select an image:</label>
+        <input type="file" id="imageUpload" name="img">
+        <br><br>
+        <textarea name="caption" id="" cols="20" rows="5" placeholder="write your caption here"></textarea>
+        <br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

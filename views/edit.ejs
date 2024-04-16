@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Edit Post</h1>
+    <h4>ID :<%=postId.id%></h4>
+    <h4>Username :<%=postId.username%></h4>
+    <form action="/posts/<%=postId.id%>?_method=PATCH" method="post">
+        <label for="imageUpload">Select an image:</label><input type="file" id="imageUpload" name="img"><%=postId.img%>
+        <br><br>
+        <textarea name="caption" id="" cols="20" rows="5"><%=postId.caption%></textarea>
+        <br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

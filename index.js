@@ -23,6 +23,8 @@ app.use(express.json());
 
 const { v4: uuidv4 } = require('uuid');
 
+require('dotenv').config();
+
 const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
 
 let posts=[

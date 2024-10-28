@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express=require("express");
 
 const app=express();
@@ -23,7 +27,6 @@ app.use(express.json());
 
 const { v4: uuidv4 } = require('uuid');
 
-require('dotenv').config();
 
 const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
 
@@ -59,7 +62,7 @@ app.post("/posts",(req, res)=>{
     let{username, img, caption}=req.body;
     let id=uuidv4();
     posts.push({id, username, img, caption});
-    res.redirect("${BASE_URL}/posts");
+    res.redirect(`${BASE_URL}/posts`);
 })
 
 app.get("/posts/:id",(req, res)=>{
@@ -81,11 +84,11 @@ app.patch("/posts/:id",(req, res)=>{
     let postId=posts.find((p)=> id===p.id);
     postId.img=newImg;
     postId.caption=newCaption;
-    res.redirect("${BASE_URL}/posts");
+    res.redirect(`${BASE_URL}/posts`);
 })
 
 app.delete("/posts/:id",(req, res)=>{
     let {id}=req.params;
     posts=posts.filter((p)=> id!=p.id);
-    res.redirect("${BASE_URL}/posts");
+    res.redirect(`${BASE_URL}/posts`);
 })

@@ -23,6 +23,8 @@ app.use(express.json());
 
 const { v4: uuidv4 } = require('uuid');
 
+const BASE_URL = process.env.BASE_URL || `http://localhost:${port}`;
+
 let posts=[
     {
         id:uuidv4(),
@@ -44,7 +46,7 @@ app.listen(port, ()=>{
 })
 
 app.get("/posts",(req, res)=>{
-    res.render("index.ejs",{posts});
+    res.render("index.ejs",{posts, BASE_URL});
 })
 
 app.get("/posts/new",(req, res)=>{
@@ -55,7 +57,7 @@ app.post("/posts",(req, res)=>{
     let{username, img, caption}=req.body;
     let id=uuidv4();
     posts.push({id, username, img, caption});
-    res.redirect("/posts");
+    res.redirect("${BASE_URL}/posts");
 })
 
 app.get("/posts/:id",(req, res)=>{
@@ -77,11 +79,11 @@ app.patch("/posts/:id",(req, res)=>{
     let postId=posts.find((p)=> id===p.id);
     postId.img=newImg;
     postId.caption=newCaption;
-    res.redirect("/posts");
+    res.redirect("${BASE_URL}/posts");
 })
 
 app.delete("/posts/:id",(req, res)=>{
     let {id}=req.params;
     posts=posts.filter((p)=> id!=p.id);
-    res.redirect("/posts");
+    res.redirect("${BASE_URL}/posts");
 })
